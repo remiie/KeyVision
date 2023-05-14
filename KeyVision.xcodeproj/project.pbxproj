@@ -9,21 +9,23 @@
 /* Begin PBXBuildFile section */
 		B6EF2D342A11666B001C260E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EF2D332A11666B001C260E /* AppDelegate.swift */; };
 		B6EF2D362A11666B001C260E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EF2D352A11666B001C260E /* SceneDelegate.swift */; };
-		B6EF2D382A11666B001C260E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EF2D372A11666B001C260E /* ViewController.swift */; };
-		B6EF2D3B2A11666B001C260E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6EF2D392A11666B001C260E /* Main.storyboard */; };
+		B6EF2D382A11666B001C260E /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EF2D372A11666B001C260E /* CameraViewController.swift */; };
 		B6EF2D3D2A11666C001C260E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6EF2D3C2A11666C001C260E /* Assets.xcassets */; };
 		B6EF2D402A11666C001C260E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6EF2D3E2A11666C001C260E /* LaunchScreen.storyboard */; };
+		B6EF2D4F2A116841001C260E /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EF2D4E2A116841001C260E /* AppCoordinator.swift */; };
+		B6EF2D572A1168FC001C260E /* DoorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EF2D562A1168FC001C260E /* DoorViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		B6EF2D302A11666B001C260E /* KeyVision.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeyVision.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6EF2D332A11666B001C260E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B6EF2D352A11666B001C260E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B6EF2D372A11666B001C260E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		B6EF2D3A2A11666B001C260E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B6EF2D372A11666B001C260E /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		B6EF2D3C2A11666C001C260E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B6EF2D3F2A11666C001C260E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B6EF2D412A11666C001C260E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B6EF2D4E2A116841001C260E /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		B6EF2D562A1168FC001C260E /* DoorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +58,120 @@
 		B6EF2D322A11666B001C260E /* KeyVision */ = {
 			isa = PBXGroup;
 			children = (
+				B6EF2D472A116686001C260E /* App */,
+				B6EF2D552A1168BE001C260E /* Services */,
+				B6EF2D502A11686B001C260E /* Modules */,
+				B6EF2D4D2A116814001C260E /* Coordinator */,
+				B6EF2D482A1166FE001C260E /* Support */,
+			);
+			path = KeyVision;
+			sourceTree = "<group>";
+		};
+		B6EF2D472A116686001C260E /* App */ = {
+			isa = PBXGroup;
+			children = (
 				B6EF2D332A11666B001C260E /* AppDelegate.swift */,
 				B6EF2D352A11666B001C260E /* SceneDelegate.swift */,
-				B6EF2D372A11666B001C260E /* ViewController.swift */,
-				B6EF2D392A11666B001C260E /* Main.storyboard */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		B6EF2D482A1166FE001C260E /* Support */ = {
+			isa = PBXGroup;
+			children = (
 				B6EF2D3C2A11666C001C260E /* Assets.xcassets */,
 				B6EF2D3E2A11666C001C260E /* LaunchScreen.storyboard */,
 				B6EF2D412A11666C001C260E /* Info.plist */,
 			);
-			path = KeyVision;
+			path = Support;
+			sourceTree = "<group>";
+		};
+		B6EF2D492A116735001C260E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B6EF2D4A2A11674B001C260E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B6EF2D372A11666B001C260E /* CameraViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		B6EF2D4B2A11675D001C260E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B6EF2D4C2A116802001C260E /* Camera  */ = {
+			isa = PBXGroup;
+			children = (
+				B6EF2D492A116735001C260E /* Views */,
+				B6EF2D4B2A11675D001C260E /* Models */,
+				B6EF2D4A2A11674B001C260E /* Controllers */,
+			);
+			path = "Camera ";
+			sourceTree = "<group>";
+		};
+		B6EF2D4D2A116814001C260E /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				B6EF2D4E2A116841001C260E /* AppCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		B6EF2D502A11686B001C260E /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				B6EF2D512A11688A001C260E /* Door */,
+				B6EF2D4C2A116802001C260E /* Camera  */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		B6EF2D512A11688A001C260E /* Door */ = {
+			isa = PBXGroup;
+			children = (
+				B6EF2D542A1168B3001C260E /* Views */,
+				B6EF2D532A1168AF001C260E /* Models */,
+				B6EF2D522A1168A8001C260E /* Controllers */,
+			);
+			path = Door;
+			sourceTree = "<group>";
+		};
+		B6EF2D522A1168A8001C260E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B6EF2D562A1168FC001C260E /* DoorViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		B6EF2D532A1168AF001C260E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B6EF2D542A1168B3001C260E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B6EF2D552A1168BE001C260E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +234,6 @@
 			files = (
 				B6EF2D402A11666C001C260E /* LaunchScreen.storyboard in Resources */,
 				B6EF2D3D2A11666C001C260E /* Assets.xcassets in Resources */,
-				B6EF2D3B2A11666B001C260E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,7 +244,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6EF2D382A11666B001C260E /* ViewController.swift in Sources */,
+				B6EF2D4F2A116841001C260E /* AppCoordinator.swift in Sources */,
+				B6EF2D382A11666B001C260E /* CameraViewController.swift in Sources */,
+				B6EF2D572A1168FC001C260E /* DoorViewController.swift in Sources */,
 				B6EF2D342A11666B001C260E /* AppDelegate.swift in Sources */,
 				B6EF2D362A11666B001C260E /* SceneDelegate.swift in Sources */,
 			);
@@ -147,14 +255,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		B6EF2D392A11666B001C260E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B6EF2D3A2A11666B001C260E /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		B6EF2D3E2A11666C001C260E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -289,12 +389,12 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7FAA7L9346;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = KeyVision/Info.plist;
+				INFOPLIST_FILE = KeyVision/Support/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,9 +402,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = virusloki.KeyVision;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -317,12 +420,12 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7FAA7L9346;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = KeyVision/Info.plist;
+				INFOPLIST_FILE = KeyVision/Support/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -330,9 +433,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = virusloki.KeyVision;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
