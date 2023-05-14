@@ -14,6 +14,9 @@
 		B6EF2D402A11666C001C260E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6EF2D3E2A11666C001C260E /* LaunchScreen.storyboard */; };
 		B6EF2D4F2A116841001C260E /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EF2D4E2A116841001C260E /* AppCoordinator.swift */; };
 		B6EF2D572A1168FC001C260E /* DoorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EF2D562A1168FC001C260E /* DoorViewController.swift */; };
+		B6EF2D5A2A116CD5001C260E /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EF2D592A116CD5001C260E /* BaseTabBarController.swift */; };
+		B6EF2D5D2A117022001C260E /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EF2D5C2A117022001C260E /* UIColor.swift */; };
+		B6EF2D612A118ECB001C260E /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EF2D602A118ECB001C260E /* UIImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		B6EF2D412A11666C001C260E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B6EF2D4E2A116841001C260E /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		B6EF2D562A1168FC001C260E /* DoorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorViewController.swift; sourceTree = "<group>"; };
+		B6EF2D592A116CD5001C260E /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
+		B6EF2D5C2A117022001C260E /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		B6EF2D602A118ECB001C260E /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +68,7 @@
 				B6EF2D552A1168BE001C260E /* Services */,
 				B6EF2D502A11686B001C260E /* Modules */,
 				B6EF2D4D2A116814001C260E /* Coordinator */,
+				B6EF2D5B2A117003001C260E /* Extensions */,
 				B6EF2D482A1166FE001C260E /* Support */,
 			);
 			path = KeyVision;
@@ -129,6 +136,7 @@
 		B6EF2D502A11686B001C260E /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				B6EF2D582A116CC3001C260E /* Base */,
 				B6EF2D512A11688A001C260E /* Door */,
 				B6EF2D4C2A116802001C260E /* Camera  */,
 			);
@@ -172,6 +180,23 @@
 			children = (
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		B6EF2D582A116CC3001C260E /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				B6EF2D592A116CD5001C260E /* BaseTabBarController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		B6EF2D5B2A117003001C260E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B6EF2D5C2A117022001C260E /* UIColor.swift */,
+				B6EF2D602A118ECB001C260E /* UIImage.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,7 +270,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6EF2D4F2A116841001C260E /* AppCoordinator.swift in Sources */,
+				B6EF2D612A118ECB001C260E /* UIImage.swift in Sources */,
+				B6EF2D5D2A117022001C260E /* UIColor.swift in Sources */,
 				B6EF2D382A11666B001C260E /* CameraViewController.swift in Sources */,
+				B6EF2D5A2A116CD5001C260E /* BaseTabBarController.swift in Sources */,
 				B6EF2D572A1168FC001C260E /* DoorViewController.swift in Sources */,
 				B6EF2D342A11666B001C260E /* AppDelegate.swift in Sources */,
 				B6EF2D362A11666B001C260E /* SceneDelegate.swift in Sources */,

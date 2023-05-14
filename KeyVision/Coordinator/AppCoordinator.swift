@@ -9,19 +9,21 @@ import UIKit
 
 class AppCoordinator {
     func start() -> UIViewController {
-        let tabBarController = UITabBarController()
-        tabBarController.tabBar.tintColor = .black
-        
+        let tabBarController = BaseTabBarController()
+
         let cameraViewController = CameraViewController()
-        cameraViewController.tabBarItem = UITabBarItem(title: "Камеры", image: nil, tag: 0)
-        
+        cameraViewController.title = "Камеры"
+    
         let doorViewController = DoorViewController()
-        doorViewController.tabBarItem = UITabBarItem(title: "Двери", image: nil, tag: 1)
-        
-        tabBarController.viewControllers = [cameraViewController, doorViewController]
-        
+        doorViewController.title = "Двери"
+   
+        let viewControllers = [cameraViewController, doorViewController]
+        tabBarController.setViewControllers(viewControllers, animated: true)
+
         return tabBarController
     }
+    
 }
+
 
 
