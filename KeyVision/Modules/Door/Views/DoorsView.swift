@@ -72,19 +72,35 @@ extension DoorsView: UITableViewDataSource, UITableViewDelegate {
         if let delegate = delegate, delegate.doorHasCamera(at: indexPath) {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: DoorWithCamCell.identifier, for: indexPath) as?
                     DoorWithCamCell else { return UITableViewCell() }
-            cell.configure(with: UIImage(named: "door"), title: "Домофон", status: "В сети")
+            cell.configure(with: UIImage(named: "door"), title: "Домофон", status: "В сети", favorite: true)
             return cell
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: DoorCell.identifier, for: indexPath) as? DoorCell
-        cell?.configure(title: "Подъезд 1")
+        cell?.configure(title: "Подъезд 1", favorite: true)
         cell?.selectionStyle = .none
         return cell ?? UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         guard let delegate = delegate else { return 0.0 }
-        let height: CGFloat = delegate.doorHasCamera(at: indexPath) ? 310.0 :80.0
+        let height: CGFloat = delegate.doorHasCamera(at: indexPath) ? 310.0 : frame.size.width/4
         return height
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let addToFavorites = UIContextualAction(style: .normal, title: "") { (action, view, completion) in
+          completion(true)
+      }
+        
+        let editAction = UIContextualAction(style: .normal, title: "") { (action, view, completion) in
+          completion(true)
+      }
+
+        addToFavorites.image = UIImage(named: "star")
+        addToFavorites.backgroundColor = UIColor.systemGray6
+        editAction.image = UIImage(named: "edit")
+        editAction.backgroundColor = UIColor.systemGray6
+      return UISwipeActionsConfiguration(actions: [addToFavorites, editAction])
     }
     
 }
