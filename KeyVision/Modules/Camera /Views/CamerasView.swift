@@ -72,7 +72,7 @@ extension CamerasView: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CameraCell.identifier, for: indexPath) as? CameraCell else { return UITableViewCell() }
-        cell.configure(with: UIImage(named: "camera"), title: "Камера 1")
+        cell.configure(with: UIImage(named: "camera"), title: "Камера 1", favorite: true)
         cell.selectionStyle = .none
         return cell
     }
@@ -92,5 +92,16 @@ extension CamerasView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 80
     }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let addToFavorites = UIContextualAction(style: .normal, title: "") { (action, view, completion) in
+          completion(true)
+      }
+
+        addToFavorites.image = UIImage(named: "star")
+        addToFavorites.backgroundColor = UIColor.systemGray6
+      return UISwipeActionsConfiguration(actions: [addToFavorites])
+    }
+    
     
 }
