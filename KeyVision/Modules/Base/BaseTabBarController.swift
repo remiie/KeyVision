@@ -8,8 +8,12 @@
 import UIKit
 
 class BaseTabBarController: UITabBarController {
+    
+    var titleLabel = UILabel()
+    
     override func viewDidLayoutSubviews() {
-        tabBar.frame = CGRect(x: 0, y: 0, width: tabBar.frame.size.width, height: tabBar.frame.size.height)
+        let labelY = titleLabel.frame.origin.y
+        tabBar.frame = CGRect(x: 0, y: labelY + 40, width: tabBar.frame.size.width, height: tabBar.frame.size.height)
         super.viewDidLayoutSubviews()
     }
     
@@ -19,7 +23,30 @@ class BaseTabBarController: UITabBarController {
     }
     
     private func configure() {
-        tabBar.barTintColor = .white
+        
+        view.addSubview(titleLabel)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.text = "Мой дом"
+        
+        titleLabel.textAlignment = .center
+        titleLabel.backgroundColor = .clear
+        titleLabel.textColor = UIColor(hexString: "333333")
+        titleLabel.font = UIFont(name: "Avenir Next Medium", size: 22) ?? UIFont.systemFont(ofSize: 22, weight: .medium)
+        
+        
+        NSLayoutConstraint.activate([
+            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            titleLabel.heightAnchor.constraint(equalToConstant: 60)
+        ])
+        
+        
+        tabBar.barTintColor = .systemGray6
+        
+        tabBar.shadowImage = UIImage()
+        tabBar.backgroundImage = UIImage()
+        
         let normalAttributes: [NSAttributedString.Key: Any] = [
             .font: UIFont(name: "Avenir Next Medium", size: 20) ?? UIFont.systemFont(ofSize: 12),
             .foregroundColor: UIColor(hexString: "333333")
