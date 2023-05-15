@@ -22,6 +22,11 @@
 		B6EF2D692A11A7FC001C260E /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EF2D682A11A7FC001C260E /* Camera.swift */; };
 		B6EF2D6C2A11A953001C260E /* CamerasViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EF2D6B2A11A953001C260E /* CamerasViewProtocol.swift */; };
 		B6EF2D6E2A11B3D4001C260E /* CameraHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EF2D6D2A11B3D4001C260E /* CameraHeader.swift */; };
+		B6EF2D702A11D908001C260E /* DoorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EF2D6F2A11D908001C260E /* DoorsView.swift */; };
+		B6EF2D732A11D934001C260E /* DoorsViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EF2D722A11D934001C260E /* DoorsViewProtocol.swift */; };
+		B6EF2D752A11DB39001C260E /* Door.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EF2D742A11DB39001C260E /* Door.swift */; };
+		B6EF2D772A11DDDE001C260E /* DoorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EF2D762A11DDDE001C260E /* DoorCell.swift */; };
+		B6EF2D792A11DEA4001C260E /* DoorWithCamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EF2D782A11DEA4001C260E /* DoorWithCamCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +47,11 @@
 		B6EF2D682A11A7FC001C260E /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		B6EF2D6B2A11A953001C260E /* CamerasViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamerasViewProtocol.swift; sourceTree = "<group>"; };
 		B6EF2D6D2A11B3D4001C260E /* CameraHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraHeader.swift; sourceTree = "<group>"; };
+		B6EF2D6F2A11D908001C260E /* DoorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorsView.swift; sourceTree = "<group>"; };
+		B6EF2D722A11D934001C260E /* DoorsViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorsViewProtocol.swift; sourceTree = "<group>"; };
+		B6EF2D742A11DB39001C260E /* Door.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Door.swift; sourceTree = "<group>"; };
+		B6EF2D762A11DDDE001C260E /* DoorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorCell.swift; sourceTree = "<group>"; };
+		B6EF2D782A11DEA4001C260E /* DoorWithCamCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorWithCamCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +171,7 @@
 		B6EF2D512A11688A001C260E /* Door */ = {
 			isa = PBXGroup;
 			children = (
+				B6EF2D712A11D921001C260E /* Protocols */,
 				B6EF2D542A1168B3001C260E /* Views */,
 				B6EF2D532A1168AF001C260E /* Models */,
 				B6EF2D522A1168A8001C260E /* Controllers */,
@@ -179,6 +190,7 @@
 		B6EF2D532A1168AF001C260E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B6EF2D742A11DB39001C260E /* Door.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -186,6 +198,8 @@
 		B6EF2D542A1168B3001C260E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B6EF2D6F2A11D908001C260E /* DoorsView.swift */,
+				B6EF2D7A2A11DEB5001C260E /* Cells */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -220,6 +234,23 @@
 				B6EF2D6B2A11A953001C260E /* CamerasViewProtocol.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		B6EF2D712A11D921001C260E /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				B6EF2D722A11D934001C260E /* DoorsViewProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		B6EF2D7A2A11DEB5001C260E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B6EF2D762A11DDDE001C260E /* DoorCell.swift */,
+				B6EF2D782A11DEA4001C260E /* DoorWithCamCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -293,17 +324,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6EF2D692A11A7FC001C260E /* Camera.swift in Sources */,
+				B6EF2D732A11D934001C260E /* DoorsViewProtocol.swift in Sources */,
 				B6EF2D6C2A11A953001C260E /* CamerasViewProtocol.swift in Sources */,
 				B6EF2D4F2A116841001C260E /* AppCoordinator.swift in Sources */,
+				B6EF2D772A11DDDE001C260E /* DoorCell.swift in Sources */,
+				B6EF2D792A11DEA4001C260E /* DoorWithCamCell.swift in Sources */,
 				B6EF2D612A118ECB001C260E /* UIImage.swift in Sources */,
 				B6EF2D5D2A117022001C260E /* UIColor.swift in Sources */,
 				B6EF2D382A11666B001C260E /* CameraViewController.swift in Sources */,
 				B6EF2D672A11A2CA001C260E /* CameraCell.swift in Sources */,
 				B6EF2D5A2A116CD5001C260E /* BaseTabBarController.swift in Sources */,
+				B6EF2D752A11DB39001C260E /* Door.swift in Sources */,
 				B6EF2D572A1168FC001C260E /* DoorViewController.swift in Sources */,
 				B6EF2D342A11666B001C260E /* AppDelegate.swift in Sources */,
 				B6EF2D652A11A29F001C260E /* CamerasView.swift in Sources */,
 				B6EF2D362A11666B001C260E /* SceneDelegate.swift in Sources */,
+				B6EF2D702A11D908001C260E /* DoorsView.swift in Sources */,
 				B6EF2D6E2A11B3D4001C260E /* CameraHeader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
