@@ -18,7 +18,7 @@ final class CamerasView: UIView, CamerasViewProtocol {
     }()
     
     private let tableView: UITableView = {
-        let tableView = UITableView()
+        let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
@@ -38,6 +38,7 @@ final class CamerasView: UIView, CamerasViewProtocol {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = .clear
+        tableView.showsVerticalScrollIndicator = false
         tableView.register(CameraCell.self, forCellReuseIdentifier: CameraCell.identifier)
         tableView.separatorStyle = .none
         addSubview(containerView)
