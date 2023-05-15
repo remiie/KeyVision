@@ -20,6 +20,15 @@ final class CameraCell: UITableViewCell {
         return view
     }()
     
+    private let favoriteImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.isHidden = true
+        imageView.image = UIImage(named: "favorite")
+        imageView.layer.masksToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
     private let cameraImage: UIImageView = {
         let imageView = UIImageView()
         imageView.layer.masksToBounds = true
@@ -47,7 +56,7 @@ final class CameraCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 10, left: 25, bottom: 10, right: 25))
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 5, left: 25, bottom: 5, right: 25))
     }
     
     private func setupViews() {
@@ -55,6 +64,7 @@ final class CameraCell: UITableViewCell {
         contentView.addSubview(containerView)
         containerView.addSubview(cameraImage)
         containerView.addSubview(cameraTitle)
+        cameraImage.addSubview(favoriteImage)
         
         NSLayoutConstraint.activate([
             containerView.topAnchor.constraint(equalTo: contentView.topAnchor),
@@ -71,11 +81,15 @@ final class CameraCell: UITableViewCell {
             cameraTitle.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -15),
             cameraTitle.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
             cameraTitle.heightAnchor.constraint(equalToConstant: 70),
+            
+            favoriteImage.topAnchor.constraint(equalTo: cameraImage.topAnchor, constant: 6),
+            favoriteImage.trailingAnchor.constraint(equalTo: cameraImage.trailingAnchor, constant: -6)
         ])
     }
     
-    func configure(with image: UIImage?, title: String) {
+    func configure(with image: UIImage?, title: String, favorite: Bool) {
         cameraImage.image = image
         cameraTitle.text = title
+        favoriteImage.isHidden = !favorite
     }
 }
