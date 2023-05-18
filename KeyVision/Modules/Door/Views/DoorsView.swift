@@ -23,6 +23,9 @@ final class DoorsView: UIView, DoorsViewProtocol {
         return tableView
     }()
     
+    let refreshControl = UIRefreshControl()
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupTableView()
@@ -43,6 +46,8 @@ final class DoorsView: UIView, DoorsViewProtocol {
         tableView.dataSource = self
         tableView.backgroundColor = .clear
         tableView.showsVerticalScrollIndicator = false
+        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        tableView.refreshControl = refreshControl
         tableView.register(DoorCell.self, forCellReuseIdentifier: DoorCell.identifier)
         tableView.register(DoorWithCamCell.self, forCellReuseIdentifier: DoorWithCamCell.identifier)
         tableView.separatorStyle = .none
@@ -62,6 +67,14 @@ final class DoorsView: UIView, DoorsViewProtocol {
             tableView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
         ])
     }
+    
+    @objc private func refreshData() {
+        delegate?.loadDataFromServer()
+    }
+    
+    func endRefreshing() {
+          refreshControl.endRefreshing()
+      }
     
 }
 
@@ -93,19 +106,23 @@ extension DoorsView: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let addToFavorites = UIContextualAction(style: .normal, title: "") { (action, view, completion) in
-          completion(true)
-      }
+        let addToFavorites = UIContextualAction(style: .normal, title: "") { [self] (action, view, completion) in
+            delegate?.changeFavorites(for: indexPath.row)
+            completion(true)
+        }
         
-        let editAction = UIContextualAction(style: .normal, title: "") { (action, view, completion) in
-          completion(true)
-      }
-
+        let editAction = UIContextualAction(style: .normal, title: "") { [self] (action, view, completion) in
+            delegate?.presentEdit(for: indexPath.row)
+            completion(true)
+        }
+        
         addToFavorites.image = UIImage(named: "star")
         addToFavorites.backgroundColor = UIColor.systemGray6
         editAction.image = UIImage(named: "edit")
         editAction.backgroundColor = UIColor.systemGray6
-      return UISwipeActionsConfiguration(actions: [addToFavorites, editAction])
+        
+        return UISwipeActionsConfiguration(actions: [addToFavorites, editAction])
     }
+
     
 }

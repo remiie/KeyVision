@@ -10,7 +10,7 @@ import UIKit
 final class CamerasView: UIView, CamerasViewProtocol {
     
     var delegate: CamerasViewDelegate?
-    
+    private let refreshControl = UIRefreshControl()
     private let containerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -46,6 +46,10 @@ final class CamerasView: UIView, CamerasViewProtocol {
         tableView.showsVerticalScrollIndicator = false
         tableView.register(CameraCell.self, forCellReuseIdentifier: CameraCell.identifier)
         tableView.separatorStyle = .none
+        
+        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        tableView.refreshControl = refreshControl
+        
         addSubview(containerView)
         containerView.addSubview(tableView)
         
@@ -62,6 +66,14 @@ final class CamerasView: UIView, CamerasViewProtocol {
             tableView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
         ])
     }
+    
+    @objc private func refreshData() {
+        delegate?.loadDataFromServer()
+    }
+    
+    func endRefreshing() {
+          refreshControl.endRefreshing()
+      }
     
 }
 
@@ -101,7 +113,8 @@ extension CamerasView: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let addToFavorites = UIContextualAction(style: .normal, title: "") { (action, view, completion) in
+        let addToFavorites = UIContextualAction(style: .normal, title: "") { [self] (action, view, completion) in
+            delegate?.changeFavorites(for: indexPath)
           completion(true)
       }
 
