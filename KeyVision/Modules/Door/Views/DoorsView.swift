@@ -33,6 +33,10 @@ final class DoorsView: UIView, DoorsViewProtocol {
         setupTableView()
     }
     
+    func updateView() {
+        tableView.reloadData()
+    }
+    
     private func setupTableView() {
         backgroundColor = .clear
         tableView.delegate = self
@@ -63,7 +67,6 @@ final class DoorsView: UIView, DoorsViewProtocol {
 
 extension DoorsView: UITableViewDataSource, UITableViewDelegate {
     
-  
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return delegate?.getItemsCount() ?? 0
     }
@@ -72,11 +75,13 @@ extension DoorsView: UITableViewDataSource, UITableViewDelegate {
         if let delegate = delegate, delegate.doorHasCamera(at: indexPath) {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: DoorWithCamCell.identifier, for: indexPath) as?
                     DoorWithCamCell else { return UITableViewCell() }
-            cell.configure(with: UIImage(named: "door"), title: "Домофон", status: "В сети", favorite: true)
+            let door = delegate.getItem(at: indexPath)
+            cell.configure(with: door.snapshot, title: door.name, status: "В сети", favorite: door.favorites)
             return cell
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: DoorCell.identifier, for: indexPath) as? DoorCell
-        cell?.configure(title: "Подъезд 1", favorite: true)
+        let door = delegate?.getItem(at: indexPath)
+        cell?.configure(title: door?.name, favorite: door?.favorites ?? false)
         cell?.selectionStyle = .none
         return cell ?? UITableViewCell()
     }
