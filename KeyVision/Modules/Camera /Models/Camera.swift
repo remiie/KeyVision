@@ -5,14 +5,18 @@
 //  Created by Роман Васильев on 15.05.2023.
 //
 
+import RealmSwift
 import Foundation
-typealias Room = [String]
 
-struct Camera: Decodable {
-    let name: String?
-    let snapshot: String?
-    let room: String?
-    let id: Int
-    let favorites: Bool
-    let rec: Bool
+class Camera: Object, Decodable {
+    @objc dynamic var name: String?
+    @objc dynamic var snapshot: String?
+    @objc dynamic var room: String?
+    @objc dynamic var id: Int = 0
+    @objc dynamic var favorites: Bool
+    @objc dynamic var rec: Bool
+
+    override static func primaryKey() -> String? {
+        return "id"
+    }
 }
