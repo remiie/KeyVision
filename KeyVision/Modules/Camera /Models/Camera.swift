@@ -8,7 +8,7 @@
 import Foundation
 typealias Room = [String]
 
-struct Camera {
+struct Camera: Decodable {
     let name: String?
     let snapshot: String?
     let room: String?
