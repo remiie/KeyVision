@@ -20,7 +20,6 @@ class DatabaseManager {
     }
     
     func cacheCameras(_ cameras: [Camera]) {
-        print("cache cameras")
         do {
             try realm.write {
                 realm.add(cameras, update: .modified)
@@ -31,7 +30,6 @@ class DatabaseManager {
     }
     
     func cacheDoors(_ doors: [Door]) {
-        print("cache Doors")
         do {
             try realm.write {
                 realm.add(doors, update: .modified)
@@ -42,14 +40,12 @@ class DatabaseManager {
     }
     
     func getCachedCameras() -> [Camera]? {
-        print("get from DB")
         let cameras = realm.objects(Camera.self)
         return Array(cameras)
     }
     
     
     func getCachedDoors() -> [Door]? {
-        print("get from DB")
         let doors = realm.objects(Door.self)
         return Array(doors)
     }
@@ -89,7 +85,6 @@ class DatabaseManager {
             }
             
             try realm.write {
-                print("changeDoorFavorites")
                 door.favorites = door.favorites ? false : true
             }
         } catch {
