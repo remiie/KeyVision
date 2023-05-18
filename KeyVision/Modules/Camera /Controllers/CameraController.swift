@@ -15,10 +15,9 @@ class CameraController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
-    private var rooms = [String]()
-    private var cameras = [Camera]()
-    
+        
+    private var sections: [String] = []
+    private var camerasBySection: [String: [Camera]] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,21 +39,38 @@ class CameraController: UIViewController {
     }
     
     private func loadData() {
-        NetworkManager.shared.fetchCameras { [self] result in
+        
+        NetworkManager.shared.fetchData(from: .cameras) { [self] (result: Result<CamerasResponse, Error>) in
             switch result {
             case .success(let successResponse):
                 guard successResponse.success,
-                      let loadedCameras = successResponse.data.cameras,
-                      let loadedRooms = successResponse.data.room else { return }
+                      let cameras = successResponse.data.cameras,
+                      let rooms = successResponse.data.room else { return }
+
+                sections = rooms.filter { room in
+                    cameras.contains { $0.room == room }
+                }
+
+                camerasBySection = Dictionary(grouping: cameras, by: { $0.room ?? "OTHERS" })
+
+                sections.append("OTHERS")
+
+                sections.sort { $0 < $1 }
+
+                if let othersSectionIndex = sections.firstIndex(of: "OTHERS") {
+                    sections.remove(at: othersSectionIndex)
+                    sections.insert("OTHERS", at: 0)
+                }
                 DispatchQueue.main.async { [self] in
                     camerasView.updateView()
                 }
-                rooms.append(contentsOf: loadedRooms)
-                cameras.append(contentsOf: loadedCameras)
+                
             case .failure(let failureResponse):
                 print(failureResponse.localizedDescription) // alert controller
+                
             }
         }
+    
     }
     
 
@@ -63,36 +79,39 @@ class CameraController: UIViewController {
 // MARK: - TableView Delegate
 
 extension CameraController: CamerasViewDelegate {
-        
+    
     func getSectionCount() -> Int {
-        return rooms.count + 1
+        return sections.count
     }
     
     func getSectionTitle(for section: Int) -> String {
-        if section == rooms.count { return "OTHERS"}
-        guard rooms.count > 0 else { return "" }
-        return rooms[section]
+        return sections[section]
     }
     
     func getItemsCount(for section: Int) -> Int {
-        if section == rooms.count {
-            let count = cameras.filter { $0.room == nil }.count
-            return count
-        }
-        let count = cameras.filter { $0.room == rooms[section] }.count
-        return count
-
+        let sectionKey = sections[section]
+        return camerasBySection[sectionKey]?.count ?? 0
+        
     }
     
-    func getItem(for index: IndexPath) -> Camera {
-        if index.section == rooms.count {
-            let nullSection = cameras.filter { $0.room == nil }
-            return nullSection[index.row]
+    func getItem(for index: IndexPath) -> Camera? {
+        
+        let sectionKey = sections[index.section]
+        if let camerasInSection = camerasBySection[sectionKey] {
+            return camerasInSection[index.row]
         }
-        let camerasForSection = cameras.filter { $0.room == rooms[index.section] }
-        return camerasForSection[index.row]
+        return nil
     }
     
-    
+    func changeFavorites(for index: IndexPath) {
+        let sectionKey = sections[index.section]
+        
+        if var camerasInSection = camerasBySection[sectionKey] {
+            var camera = camerasInSection[index.row]
+            camera.favorites = camera.favorites ? false : true
+            camerasInSection[index.row] = camera
+            camerasBySection[sectionKey] = camerasInSection
+            camerasView.updateView()
+        }
+    }
 }
-
