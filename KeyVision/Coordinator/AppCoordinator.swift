@@ -11,10 +11,10 @@ class AppCoordinator {
     func start() -> UIViewController {
         let tabBarController = BaseTabBarController()
 
-        let cameraViewController = CameraViewController()
+        let cameraViewController = CameraController()
         cameraViewController.title = "Камеры"
     
-        let doorViewController = DoorViewController()
+        let doorViewController = DoorController()
         doorViewController.title = "Двери"
    
         let viewControllers = [cameraViewController, doorViewController]
