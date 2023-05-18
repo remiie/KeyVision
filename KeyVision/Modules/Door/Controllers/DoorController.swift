@@ -35,25 +35,7 @@ final class DoorController: UIViewController {
             doorsView.bottomAnchor.constraint(equalTo: view.bottomAnchor) ])
     }
     
-    private func loadData() {
-        
-        NetworkManager.shared.fetchData(from: .doors) { [self] (result: Result<DoorsResponse, Error>) in
-            switch result {
-            case .success(let successResponse):
-                guard successResponse.success,
-                      let loadedDoors = successResponse.data else { return }
-                doors.append(contentsOf: loadedDoors)
-                DispatchQueue.main.async { [self] in
-                    doorsView.updateView()
-                }
-             
-            case .failure(let failureResponse):
-                print(failureResponse.localizedDescription) // alert
-            }
-        }
-    }
-    
-    
+
     private func loadDataFromDatabase() {
         DispatchQueue.main.async { [weak self] in
             if let cachedDoors = DatabaseManager.shared.getCachedDoors(), !cachedDoors.isEmpty {
@@ -65,7 +47,6 @@ final class DoorController: UIViewController {
     }
     
 
-    
     func loadDataFromServer() {
         NetworkManager.shared.fetchData(from: .doors) { [self] (result: Result<DoorsResponse, Error>) in
             switch result {

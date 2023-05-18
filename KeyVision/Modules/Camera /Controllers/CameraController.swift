@@ -66,9 +66,6 @@ class CameraController: UIViewController {
     
     }
     
-    @objc private func refreshData() {
-        loadDataFromServer()
-    }
     
     private func handleCamerasData(_ cameras: [Camera]) {
         let rooms = cameras.compactMap { $0.room }
