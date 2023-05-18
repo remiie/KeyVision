@@ -30,7 +30,7 @@ class CameraController: UIViewController {
         view.backgroundColor = .systemGray6
         
         NSLayoutConstraint.activate([
-            camerasView.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.size.width/4 + 10),
+            camerasView.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.size.width/3 + 10),
             camerasView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             camerasView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             camerasView.bottomAnchor.constraint(equalTo: view.bottomAnchor)])
