@@ -10,6 +10,10 @@
 		B66DAE992A15F66200930F1F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66DAE982A15F66200930F1F /* NetworkManager.swift */; };
 		B66DAE9B2A15F8A900930F1F /* CamerasResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66DAE9A2A15F8A900930F1F /* CamerasResponse.swift */; };
 		B66DAE9D2A15FF7C00930F1F /* DoorsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66DAE9C2A15FF7C00930F1F /* DoorsResponse.swift */; };
+		B66DAEA02A1635C100930F1F /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66DAE9F2A1635C100930F1F /* ImageLoader.swift */; };
+		B66DAEA22A1635E000930F1F /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66DAEA12A1635E000930F1F /* Endpoint.swift */; };
+		B66DAEA42A1635F500930F1F /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66DAEA32A1635F500930F1F /* Errors.swift */; };
+		B66DAEA62A16396600930F1F /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66DAEA52A16396600930F1F /* DatabaseManager.swift */; };
 		B6EF2D342A11666B001C260E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EF2D332A11666B001C260E /* AppDelegate.swift */; };
 		B6EF2D362A11666B001C260E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EF2D352A11666B001C260E /* SceneDelegate.swift */; };
 		B6EF2D382A11666B001C260E /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EF2D372A11666B001C260E /* CameraController.swift */; };
@@ -30,12 +34,20 @@
 		B6EF2D752A11DB39001C260E /* Door.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EF2D742A11DB39001C260E /* Door.swift */; };
 		B6EF2D772A11DDDE001C260E /* DoorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EF2D762A11DDDE001C260E /* DoorCell.swift */; };
 		B6EF2D792A11DEA4001C260E /* DoorWithCamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EF2D782A11DEA4001C260E /* DoorWithCamCell.swift */; };
+		B8470A9E90E0D84DCD5A1169 /* Pods_KeyVision.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F621E2083BC4D27EE363889 /* Pods_KeyVision.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F621E2083BC4D27EE363889 /* Pods_KeyVision.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KeyVision.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6297E893CF1A14311FEB436C /* Pods-KeyVision.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeyVision.debug.xcconfig"; path = "Target Support Files/Pods-KeyVision/Pods-KeyVision.debug.xcconfig"; sourceTree = "<group>"; };
+		716C905112C2BD19A98FB4E8 /* Pods-KeyVision.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeyVision.release.xcconfig"; path = "Target Support Files/Pods-KeyVision/Pods-KeyVision.release.xcconfig"; sourceTree = "<group>"; };
 		B66DAE982A15F66200930F1F /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		B66DAE9A2A15F8A900930F1F /* CamerasResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamerasResponse.swift; sourceTree = "<group>"; };
 		B66DAE9C2A15FF7C00930F1F /* DoorsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorsResponse.swift; sourceTree = "<group>"; };
+		B66DAE9F2A1635C100930F1F /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		B66DAEA12A1635E000930F1F /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		B66DAEA32A1635F500930F1F /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		B66DAEA52A16396600930F1F /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		B6EF2D302A11666B001C260E /* KeyVision.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeyVision.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6EF2D332A11666B001C260E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B6EF2D352A11666B001C260E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,17 +77,49 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8470A9E90E0D84DCD5A1169 /* Pods_KeyVision.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		430F7E8157DBB09BF3AEBD9A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1F621E2083BC4D27EE363889 /* Pods_KeyVision.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7EF7ADAAC6895A90BCA852EE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6297E893CF1A14311FEB436C /* Pods-KeyVision.debug.xcconfig */,
+				716C905112C2BD19A98FB4E8 /* Pods-KeyVision.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		B66DAE9E2A16359D00930F1F /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				B66DAEA32A1635F500930F1F /* Errors.swift */,
+				B66DAEA12A1635E000930F1F /* Endpoint.swift */,
+				B66DAE9F2A1635C100930F1F /* ImageLoader.swift */,
+				B66DAE982A15F66200930F1F /* NetworkManager.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		B6EF2D272A11666B001C260E = {
 			isa = PBXGroup;
 			children = (
 				B6EF2D322A11666B001C260E /* KeyVision */,
 				B6EF2D312A11666B001C260E /* Products */,
+				7EF7ADAAC6895A90BCA852EE /* Pods */,
+				430F7E8157DBB09BF3AEBD9A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -215,7 +259,8 @@
 		B6EF2D552A1168BE001C260E /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				B66DAE982A15F66200930F1F /* NetworkManager.swift */,
+				B66DAE9E2A16359D00930F1F /* Network */,
+				B66DAEA52A16396600930F1F /* DatabaseManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -269,9 +314,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B6EF2D442A11666C001C260E /* Build configuration list for PBXNativeTarget "KeyVision" */;
 			buildPhases = (
+				28E28517EF20A911F772D8BD /* [CP] Check Pods Manifest.lock */,
 				B6EF2D2C2A11666B001C260E /* Sources */,
 				B6EF2D2D2A11666B001C260E /* Frameworks */,
 				B6EF2D2E2A11666B001C260E /* Resources */,
+				991043E9932FB2D5233F0E0F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -327,6 +374,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		28E28517EF20A911F772D8BD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KeyVision-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		991043E9932FB2D5233F0E0F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KeyVision/Pods-KeyVision-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KeyVision/Pods-KeyVision-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KeyVision/Pods-KeyVision-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B6EF2D2C2A11666B001C260E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -336,8 +425,10 @@
 				B6EF2D692A11A7FC001C260E /* Camera.swift in Sources */,
 				B6EF2D732A11D934001C260E /* DoorsViewProtocol.swift in Sources */,
 				B6EF2D6C2A11A953001C260E /* CamerasViewProtocol.swift in Sources */,
+				B66DAEA42A1635F500930F1F /* Errors.swift in Sources */,
 				B6EF2D4F2A116841001C260E /* AppCoordinator.swift in Sources */,
 				B6EF2D772A11DDDE001C260E /* DoorCell.swift in Sources */,
+				B66DAEA62A16396600930F1F /* DatabaseManager.swift in Sources */,
 				B6EF2D792A11DEA4001C260E /* DoorWithCamCell.swift in Sources */,
 				B6EF2D612A118ECB001C260E /* UIImage.swift in Sources */,
 				B6EF2D5D2A117022001C260E /* UIColor.swift in Sources */,
@@ -348,6 +439,8 @@
 				B6EF2D572A1168FC001C260E /* DoorController.swift in Sources */,
 				B6EF2D342A11666B001C260E /* AppDelegate.swift in Sources */,
 				B66DAE9D2A15FF7C00930F1F /* DoorsResponse.swift in Sources */,
+				B66DAEA02A1635C100930F1F /* ImageLoader.swift in Sources */,
+				B66DAEA22A1635E000930F1F /* Endpoint.swift in Sources */,
 				B66DAE9B2A15F8A900930F1F /* CamerasResponse.swift in Sources */,
 				B6EF2D652A11A29F001C260E /* CamerasView.swift in Sources */,
 				B6EF2D362A11666B001C260E /* SceneDelegate.swift in Sources */,
@@ -486,6 +579,7 @@
 		};
 		B6EF2D452A11666C001C260E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6297E893CF1A14311FEB436C /* Pods-KeyVision.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -517,6 +611,7 @@
 		};
 		B6EF2D462A11666C001C260E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 716C905112C2BD19A98FB4E8 /* Pods-KeyVision.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
