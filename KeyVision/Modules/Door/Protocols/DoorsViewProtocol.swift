@@ -9,6 +9,7 @@ import UIKit
 
 protocol DoorsViewProtocol: AnyObject {
     var delegate: DoorsViewDelegate? { get set }
+    func updateView()
 }
 
 protocol DoorsViewDelegate: AnyObject {
