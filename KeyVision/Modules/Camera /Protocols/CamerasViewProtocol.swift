@@ -10,11 +10,14 @@ import UIKit
 protocol CamerasViewProtocol: AnyObject {
     var delegate: CamerasViewDelegate? { get set }
     func updateView()
+    func endRefreshing()
 }
 
 protocol CamerasViewDelegate: AnyObject {
     func getSectionCount() -> Int
     func getSectionTitle(for section: Int) -> String
     func getItemsCount(for section: Int) -> Int
-    func getItem(for index: IndexPath) -> Camera
+    func getItem(for index: IndexPath) -> Camera?
+    func changeFavorites(for index: IndexPath)
+    func loadDataFromServer() 
 }
