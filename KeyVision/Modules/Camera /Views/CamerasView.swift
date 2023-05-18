@@ -33,6 +33,11 @@ final class CamerasView: UIView, CamerasViewProtocol {
         setupTableView()
     }
     
+    
+    func updateView() {
+        tableView.reloadData()
+    }
+    
     private func setupTableView() {
         backgroundColor = .clear
         tableView.delegate = self
@@ -71,11 +76,13 @@ extension CamerasView: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: CameraCell.identifier, for: indexPath) as? CameraCell else { return UITableViewCell() }
-        cell.configure(with: UIImage(named: "camera"), title: "Камера 1", favorite: true)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CameraCell.identifier, for: indexPath) as? CameraCell,
+              let camera = delegate?.getItem(for: indexPath) else { return UITableViewCell() }
+        cell.configure(with: camera.snapshot, title: camera.name, favorite: camera.favorites)
         cell.selectionStyle = .none
         return cell
     }
+    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 310
@@ -84,7 +91,7 @@ extension CamerasView: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = CameraHeaderView()
-        headerView.titleLabel.text = "Заголовок секции \(section)"
+        headerView.titleLabel.text = delegate?.getSectionTitle(for: section)
         return headerView
     }
  
