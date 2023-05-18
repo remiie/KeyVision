@@ -117,16 +117,24 @@ final class DoorWithCamCell: UITableViewCell {
         ])
     }
     
-    func configure(with image: UIImage?, title: String, status: String?, favorite: Bool) {
-        cameraImage.image = image
+    func configure(with image: String?, title: String?, status: String?, favorite: Bool) {
         doorTitle.text = title
         favoriteImage.isHidden = !favorite
         doorStatus.text = status
+        loadImage(image)
     }
-    
     
     @objc func lockButtonPressed(_ sender: UIButton) {
         lockButton.isSelected = lockButton.isSelected ? false : true
+    }
+    
+    private func loadImage(_ urlString: String?) {
+        guard urlString != nil, let url = URL(string: urlString!) else { return }
+        NetworkManager.shared.downloadImage(url: url) { image in
+            DispatchQueue.main.async { [self] in
+                cameraImage.image = image
+            }
+        }
     }
     
 }

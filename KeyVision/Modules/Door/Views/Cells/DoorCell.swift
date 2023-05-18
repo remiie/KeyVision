@@ -90,7 +90,7 @@ final class DoorCell: UITableViewCell {
         ])
     }
     
-    func configure(title: String, favorite: Bool) {
+    func configure(title: String?, favorite: Bool) {
         doorTitle.text = title
         favoriteImage.isHidden = !favorite
     }

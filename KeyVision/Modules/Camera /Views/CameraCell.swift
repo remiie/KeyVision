@@ -87,9 +87,18 @@ final class CameraCell: UITableViewCell {
         ])
     }
     
-    func configure(with image: UIImage?, title: String, favorite: Bool) {
-        cameraImage.image = image
+    func configure(with image: String?, title: String?, favorite: Bool) {
+        loadImage(image)
         cameraTitle.text = title
         favoriteImage.isHidden = !favorite
+    }
+    
+    private func loadImage(_ urlString: String?) {
+        guard urlString != nil, let url = URL(string: urlString!) else { return }
+        NetworkManager.shared.downloadImage(url: url) { image in
+            DispatchQueue.main.async { [self] in
+                cameraImage.image = image
+            }
+        }
     }
 }
