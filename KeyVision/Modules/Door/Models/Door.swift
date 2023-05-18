@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Door {
+struct Door: Decodable {
     let name: String?
     let snapshot: String?
     let room: String?
