@@ -7,13 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B66DAE992A15F66200930F1F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66DAE982A15F66200930F1F /* NetworkManager.swift */; };
+		B66DAE9B2A15F8A900930F1F /* CamerasResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66DAE9A2A15F8A900930F1F /* CamerasResponse.swift */; };
+		B66DAE9D2A15FF7C00930F1F /* DoorsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66DAE9C2A15FF7C00930F1F /* DoorsResponse.swift */; };
 		B6EF2D342A11666B001C260E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EF2D332A11666B001C260E /* AppDelegate.swift */; };
 		B6EF2D362A11666B001C260E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EF2D352A11666B001C260E /* SceneDelegate.swift */; };
-		B6EF2D382A11666B001C260E /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EF2D372A11666B001C260E /* CameraViewController.swift */; };
+		B6EF2D382A11666B001C260E /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EF2D372A11666B001C260E /* CameraController.swift */; };
 		B6EF2D3D2A11666C001C260E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6EF2D3C2A11666C001C260E /* Assets.xcassets */; };
 		B6EF2D402A11666C001C260E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6EF2D3E2A11666C001C260E /* LaunchScreen.storyboard */; };
 		B6EF2D4F2A116841001C260E /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EF2D4E2A116841001C260E /* AppCoordinator.swift */; };
-		B6EF2D572A1168FC001C260E /* DoorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EF2D562A1168FC001C260E /* DoorViewController.swift */; };
+		B6EF2D572A1168FC001C260E /* DoorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EF2D562A1168FC001C260E /* DoorController.swift */; };
 		B6EF2D5A2A116CD5001C260E /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EF2D592A116CD5001C260E /* BaseTabBarController.swift */; };
 		B6EF2D5D2A117022001C260E /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EF2D5C2A117022001C260E /* UIColor.swift */; };
 		B6EF2D612A118ECB001C260E /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EF2D602A118ECB001C260E /* UIImage.swift */; };
@@ -30,15 +33,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B66DAE982A15F66200930F1F /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		B66DAE9A2A15F8A900930F1F /* CamerasResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamerasResponse.swift; sourceTree = "<group>"; };
+		B66DAE9C2A15FF7C00930F1F /* DoorsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorsResponse.swift; sourceTree = "<group>"; };
 		B6EF2D302A11666B001C260E /* KeyVision.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeyVision.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6EF2D332A11666B001C260E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B6EF2D352A11666B001C260E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B6EF2D372A11666B001C260E /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		B6EF2D372A11666B001C260E /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 		B6EF2D3C2A11666C001C260E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B6EF2D3F2A11666C001C260E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B6EF2D412A11666C001C260E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B6EF2D4E2A116841001C260E /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
-		B6EF2D562A1168FC001C260E /* DoorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorViewController.swift; sourceTree = "<group>"; };
+		B6EF2D562A1168FC001C260E /* DoorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorController.swift; sourceTree = "<group>"; };
 		B6EF2D592A116CD5001C260E /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		B6EF2D5C2A117022001C260E /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		B6EF2D602A118ECB001C260E /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
@@ -126,7 +132,7 @@
 		B6EF2D4A2A11674B001C260E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B6EF2D372A11666B001C260E /* CameraViewController.swift */,
+				B6EF2D372A11666B001C260E /* CameraController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -135,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				B6EF2D682A11A7FC001C260E /* Camera.swift */,
+				B66DAE9A2A15F8A900930F1F /* CamerasResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -182,7 +189,7 @@
 		B6EF2D522A1168A8001C260E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B6EF2D562A1168FC001C260E /* DoorViewController.swift */,
+				B6EF2D562A1168FC001C260E /* DoorController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -191,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				B6EF2D742A11DB39001C260E /* Door.swift */,
+				B66DAE9C2A15FF7C00930F1F /* DoorsResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -207,6 +215,7 @@
 		B6EF2D552A1168BE001C260E /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				B66DAE982A15F66200930F1F /* NetworkManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -323,6 +332,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B66DAE992A15F66200930F1F /* NetworkManager.swift in Sources */,
 				B6EF2D692A11A7FC001C260E /* Camera.swift in Sources */,
 				B6EF2D732A11D934001C260E /* DoorsViewProtocol.swift in Sources */,
 				B6EF2D6C2A11A953001C260E /* CamerasViewProtocol.swift in Sources */,
@@ -331,12 +341,14 @@
 				B6EF2D792A11DEA4001C260E /* DoorWithCamCell.swift in Sources */,
 				B6EF2D612A118ECB001C260E /* UIImage.swift in Sources */,
 				B6EF2D5D2A117022001C260E /* UIColor.swift in Sources */,
-				B6EF2D382A11666B001C260E /* CameraViewController.swift in Sources */,
+				B6EF2D382A11666B001C260E /* CameraController.swift in Sources */,
 				B6EF2D672A11A2CA001C260E /* CameraCell.swift in Sources */,
 				B6EF2D5A2A116CD5001C260E /* BaseTabBarController.swift in Sources */,
 				B6EF2D752A11DB39001C260E /* Door.swift in Sources */,
-				B6EF2D572A1168FC001C260E /* DoorViewController.swift in Sources */,
+				B6EF2D572A1168FC001C260E /* DoorController.swift in Sources */,
 				B6EF2D342A11666B001C260E /* AppDelegate.swift in Sources */,
+				B66DAE9D2A15FF7C00930F1F /* DoorsResponse.swift in Sources */,
+				B66DAE9B2A15F8A900930F1F /* CamerasResponse.swift in Sources */,
 				B6EF2D652A11A29F001C260E /* CamerasView.swift in Sources */,
 				B6EF2D362A11666B001C260E /* SceneDelegate.swift in Sources */,
 				B6EF2D702A11D908001C260E /* DoorsView.swift in Sources */,
