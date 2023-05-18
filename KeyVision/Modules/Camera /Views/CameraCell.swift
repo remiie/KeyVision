@@ -44,6 +44,12 @@ final class CameraCell: UITableViewCell {
         return label
     }()
     
+    private let activityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView(style: .gray)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        return activityIndicator
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
@@ -65,6 +71,7 @@ final class CameraCell: UITableViewCell {
         containerView.addSubview(cameraImage)
         containerView.addSubview(cameraTitle)
         cameraImage.addSubview(favoriteImage)
+        containerView.addSubview(activityIndicator)
         
         NSLayoutConstraint.activate([
             containerView.topAnchor.constraint(equalTo: contentView.topAnchor),
@@ -83,12 +90,16 @@ final class CameraCell: UITableViewCell {
             cameraTitle.heightAnchor.constraint(equalToConstant: 70),
             
             favoriteImage.topAnchor.constraint(equalTo: cameraImage.topAnchor, constant: 6),
-            favoriteImage.trailingAnchor.constraint(equalTo: cameraImage.trailingAnchor, constant: -6)
+            favoriteImage.trailingAnchor.constraint(equalTo: cameraImage.trailingAnchor, constant: -6),
+            
+            activityIndicator.centerXAnchor.constraint(equalTo: cameraImage.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: cameraImage.centerYAnchor)
         ])
     }
     
     func configure(with image: String?, title: String?, favorite: Bool) {
-        loadImage(image)
+        activityIndicator.startAnimating()
+       loadImage(image)
         cameraTitle.text = title
         favoriteImage.isHidden = !favorite
     }
@@ -97,6 +108,7 @@ final class CameraCell: UITableViewCell {
         guard urlString != nil, let url = URL(string: urlString!) else { return }
         NetworkManager.shared.downloadImage(url: url) { image in
             DispatchQueue.main.async { [self] in
+                activityIndicator.stopAnimating()
                 cameraImage.image = image
             }
         }

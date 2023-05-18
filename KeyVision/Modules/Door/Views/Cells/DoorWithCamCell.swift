@@ -61,6 +61,12 @@ final class DoorWithCamCell: UITableViewCell {
         return label
     }()
     
+    private let activityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView(style: .gray)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        return activityIndicator
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
@@ -85,6 +91,7 @@ final class DoorWithCamCell: UITableViewCell {
         containerView.addSubview(doorStatus)
         containerView.addSubview(lockButton)
         cameraImage.addSubview(favoriteImage)
+        containerView.addSubview(activityIndicator)
         lockButton.addTarget(self, action: #selector(lockButtonPressed), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
@@ -112,12 +119,16 @@ final class DoorWithCamCell: UITableViewCell {
             lockButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -30),
             
             favoriteImage.topAnchor.constraint(equalTo: cameraImage.topAnchor, constant: 6),
-            favoriteImage.trailingAnchor.constraint(equalTo: cameraImage.trailingAnchor, constant: -6)
+            favoriteImage.trailingAnchor.constraint(equalTo: cameraImage.trailingAnchor, constant: -6),
+            
+            activityIndicator.centerXAnchor.constraint(equalTo: cameraImage.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: cameraImage.centerYAnchor)
             
         ])
     }
     
     func configure(with image: String?, title: String?, status: String?, favorite: Bool) {
+        activityIndicator.startAnimating()
         doorTitle.text = title
         favoriteImage.isHidden = !favorite
         doorStatus.text = status
@@ -132,6 +143,7 @@ final class DoorWithCamCell: UITableViewCell {
         guard urlString != nil, let url = URL(string: urlString!) else { return }
         NetworkManager.shared.downloadImage(url: url) { image in
             DispatchQueue.main.async { [self] in
+                activityIndicator.stopAnimating()
                 cameraImage.image = image
             }
         }
