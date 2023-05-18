@@ -22,64 +22,83 @@ class CameraController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
-        loadData()
-        
+        loadDataFromDatabase()
     }
-    
     
     private func configure() {
         view.addSubview(camerasView)
         view.backgroundColor = .systemGray6
         
-        NSLayoutConstraint.activate([ // save constant
+        NSLayoutConstraint.activate([
             camerasView.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.size.width/4 + 10),
             camerasView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             camerasView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             camerasView.bottomAnchor.constraint(equalTo: view.bottomAnchor)])
     }
     
-    private func loadData() {
-        
+    private func loadDataFromDatabase() {
+        DispatchQueue.main.async { [weak self] in
+            if let cachedCameras = DatabaseManager.shared.getCachedCameras(), !cachedCameras.isEmpty {
+                self?.handleCamerasData(cachedCameras)
+            } else {
+                self?.loadDataFromServer()
+            }
+        }
+    }
+
+    
+     func loadDataFromServer() {
         NetworkManager.shared.fetchData(from: .cameras) { [self] (result: Result<CamerasResponse, Error>) in
             switch result {
             case .success(let successResponse):
                 guard successResponse.success,
-                      let cameras = successResponse.data.cameras,
-                      let rooms = successResponse.data.room else { return }
-
-                sections = rooms.filter { room in
-                    cameras.contains { $0.room == room }
+                      let cameras = successResponse.data.cameras else { return }
+                handleCamerasData(cameras)
+                DispatchQueue.main.async {
+                    DatabaseManager.shared.cacheCameras(cameras)
                 }
-
-                camerasBySection = Dictionary(grouping: cameras, by: { $0.room ?? "OTHERS" })
-
-                sections.append("OTHERS")
-
-                sections.sort { $0 < $1 }
-
-                if let othersSectionIndex = sections.firstIndex(of: "OTHERS") {
-                    sections.remove(at: othersSectionIndex)
-                    sections.insert("OTHERS", at: 0)
-                }
-                DispatchQueue.main.async { [self] in
-                    camerasView.updateView()
-                }
-                
+               
             case .failure(let failureResponse):
-                print(failureResponse.localizedDescription) // alert controller
+                print("Error loading cameras: \(failureResponse.localizedDescription)") // alert controller
                 
             }
         }
     
     }
     
-
+    @objc private func refreshData() {
+        loadDataFromServer()
+    }
+    
+    private func handleCamerasData(_ cameras: [Camera]) {
+        let rooms = cameras.compactMap { $0.room }
+        let uniqueRooms = Array(Set(rooms))
+        
+        sections = uniqueRooms.filter { room in
+            cameras.contains { $0.room == room }
+        }
+        
+        camerasBySection = Dictionary(grouping: cameras, by: { $0.room ?? "OTHERS" })
+        
+        sections.append("OTHERS")
+        
+        sections.sort { $0 < $1 }
+        
+        if let othersSectionIndex = sections.firstIndex(of: "OTHERS") {
+            sections.remove(at: othersSectionIndex)
+            sections.insert("OTHERS", at: 0)
+        }
+        
+        DispatchQueue.main.async { [weak self] in
+            self?.camerasView.updateView()
+            self?.camerasView.endRefreshing()
+        }
+    }
 }
 
-// MARK: - TableView Delegate
+// MARK: - CamerasViewDelegate
 
 extension CameraController: CamerasViewDelegate {
-    
     func getSectionCount() -> Int {
         return sections.count
     }
@@ -91,11 +110,9 @@ extension CameraController: CamerasViewDelegate {
     func getItemsCount(for section: Int) -> Int {
         let sectionKey = sections[section]
         return camerasBySection[sectionKey]?.count ?? 0
-        
     }
     
     func getItem(for index: IndexPath) -> Camera? {
-        
         let sectionKey = sections[index.section]
         if let camerasInSection = camerasBySection[sectionKey] {
             return camerasInSection[index.row]
@@ -103,15 +120,21 @@ extension CameraController: CamerasViewDelegate {
         return nil
     }
     
+    
     func changeFavorites(for index: IndexPath) {
         let sectionKey = sections[index.section]
         
-        if var camerasInSection = camerasBySection[sectionKey] {
-            var camera = camerasInSection[index.row]
-            camera.favorites = camera.favorites ? false : true
-            camerasInSection[index.row] = camera
-            camerasBySection[sectionKey] = camerasInSection
+        if let camerasInSection = camerasBySection[sectionKey] {
+            let camera = camerasInSection[index.row]
+            
+            DatabaseManager.shared.changeCameraFavorites(for: camera.id)
             camerasView.updateView()
         }
     }
+
+
+
+    
+    
+    
 }
